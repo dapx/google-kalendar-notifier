@@ -8,6 +8,11 @@ repositories {
 
 kotlin {
   linuxX64("native") {
+    val main by compilations.getting
+    val interop by main.cinterops.creating {
+      defFile(project.file("src/nativeInterop/cinterop/libnotify.def"))
+    }
+
     binaries {
       executable()
     }
